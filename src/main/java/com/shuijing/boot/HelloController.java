@@ -1,6 +1,7 @@
 package com.shuijing.boot;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,4 +25,13 @@ public class HelloController {
         user.setAge(age);
         return user;
     }
+
+    @GetMapping("/pathvariable/{name}/{age}")
+    public User pathVariable(@PathVariable String name, @PathVariable Integer age){
+        User user = new User();
+        user.setName(name);
+        user.setAge(age);
+        return user;
+    }
+
 }
