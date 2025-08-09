@@ -1,6 +1,2 @@
 # boot
-First
-
-Se  
-aaaaaOK  
-New Computer
+This repository is a study project about Spring Boot.
