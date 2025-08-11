@@ -1,5 +1,3 @@
 # boot
-First
-
-Se  
-aaaaaOK
+This repository is a study project about Spring Boot.
+Test file.
