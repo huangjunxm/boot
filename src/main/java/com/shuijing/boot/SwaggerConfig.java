@@ -24,10 +24,11 @@ public class SwaggerConfig {
                 .paths(PathSelectors.any())
                 .build();
     }
+
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Spring Boot 实战")
-                .description("Spring Boot 实战的 RESTFul接口文档说明")
+                .title("Spring Boot实战")
+                .description("Spring Boot 实战的RestFul接口文档说明")
                 .contact(new Contact("黄骏","https://www.sina.com.cn","41293877@qq.com"))
                 .version("1.0")
                 .build();
