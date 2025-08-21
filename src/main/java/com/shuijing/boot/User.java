@@ -1,11 +1,12 @@
 package com.shuijing.boot;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Past;
+
 import lombok.Data;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Past;
 import java.time.LocalDate;
 
 @Data
