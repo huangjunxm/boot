@@ -4,6 +4,7 @@ package com.shuijing.boot;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -27,8 +28,12 @@ public class HelloController {
     }
 
     @GetMapping("/requestparam")
-//    @ApiOperation(value = "Url直接带参数接口")
-    public User requestParam(@Parameter(description = "用户名") @RequestParam String name, @Parameter(description = "用户年龄") @RequestParam Integer age){
+    @Operation(summary = "Url直接带参数接口")
+    @Parameters(value = {
+            @Parameter(name = "name",description = "用户名",example = "王二狗"),
+            @Parameter(name = "age" ,description = "用户年龄",example = "28")
+    })
+    public User requestParam(@RequestParam String name, @RequestParam Integer age){
         User user = new User();
         user.setName(name);
         user.setAge(age);
