@@ -1,6 +1,10 @@
 package com.shuijing.boot;
 
 
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,8 +12,10 @@ import javax.validation.Valid;
 
 @RestController
 @Slf4j
+@Tag(name = "Hello控制器",description = "展现几种不同的参数调用方案")
 public class HelloController {
     @GetMapping("/hello")
+    @Operation(summary = "无参仅显示Hello World",description = "没有参数")
     public String hello(){
         log.info("hello");
         return "hello world";
@@ -21,7 +27,8 @@ public class HelloController {
     }
 
     @GetMapping("/requestparam")
-    public User requestParam(@RequestParam String name, @RequestParam Integer age){
+//    @ApiOperation(value = "Url直接带参数接口")
+    public User requestParam(@Parameter(description = "用户名") @RequestParam String name, @Parameter(description = "用户年龄") @RequestParam Integer age){
         User user = new User();
         user.setName(name);
         user.setAge(age);
@@ -29,7 +36,8 @@ public class HelloController {
     }
 
     @GetMapping("/pathvariable/{name}/{age}")
-    public User pathVariable(@PathVariable String name, @PathVariable Integer age){
+//    @ApiOperation(value = "目录型调用接口")
+    public User pathVariable(@Parameter(description = "用户名") @PathVariable String name, @Parameter(description = "用户年龄") @PathVariable Integer age){
         User user = new User();
         user.setName(name);
         user.setAge(age);
