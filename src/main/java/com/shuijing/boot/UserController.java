@@ -68,4 +68,10 @@ public class UserController {
         return userRepository.findByBirthday(birthday);
     }
 
+    @Operation(summary = "使用原生SQL方案按生日查找")
+    @GetMapping("/brithdaynative")
+    public List<User> getByBrithDayNative(@RequestParam("birthdaynative")String birthdayNative){
+        return userRepository.findByBirthDayNative(birthdayNative);
+    }
+
 }

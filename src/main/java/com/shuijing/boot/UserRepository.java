@@ -13,5 +13,6 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Query("select u from User u where u.birthday = ?1")
     List<User> findByBirthday(@Param("birthday") LocalDate birthday);
 
-
+    @Query(value = "select * from user where birthday = :birthDay",nativeQuery = true)
+    List<User> findByBirthDayNative(@Param("birthDay") String birthDay);
 }
