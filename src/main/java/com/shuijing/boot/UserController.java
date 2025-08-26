@@ -9,6 +9,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
+import java.util.List;
 
 @RestController
 @RequestMapping("/users")
@@ -32,6 +34,7 @@ public class UserController {
     @Operation(summary = "更新用户")
     @PutMapping
     public User update(@RequestBody @Valid User user){
+        System.out.println("user = " + user.toString());
         return userRepository.save(user);
     }
 
@@ -50,4 +53,18 @@ public class UserController {
         Pageable pageable = PageRequest.of(page, size, direction, property);
         return userRepository.findAll(pageable);
     }
+
+    @Operation(summary = "根据名称获取用户信息")
+    @GetMapping("/name")
+    public List<User> getByName(@RequestParam String name){
+        return userRepository.findByNameContaining(name);
+    }
+
+    @Operation(summary = "使用JPQL方案按生日查找")
+    @GetMapping("/birthday")
+    public List<User> getByBirthDayByJPQL(@RequestParam("birthday") String birthdayStr){
+        LocalDate birthday = birthdayStr.isEmpty() ? LocalDate.now() : LocalDate.parse(birthdayStr);
+        return userRepository.findByBirthday(birthday);
+    }
+
 }

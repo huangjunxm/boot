@@ -23,7 +23,7 @@ public class User {
     @Schema(description = "姓名",example = "王二狗")
     private String name;
 
-    @Transient
+//    @Transient
     @Min(value=1,message = "年龄不能小于1")
     @Schema(description = "年龄")
     private int age;
