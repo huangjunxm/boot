@@ -14,5 +14,5 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     List<User> findByBirthday(@Param("birthday") LocalDate birthday);
 
     @Query(value = "select * from user where birthday = :birthDay",nativeQuery = true)
-    List<User> findByBirthDayNative(@Param("birthDay") String birthDay);
+    List<User> findByBirthDayNative(@Param("birthDay") String birth_Day);//@Param("birthDay")里的参数名才是传递到SQL语句里的参数
 }
