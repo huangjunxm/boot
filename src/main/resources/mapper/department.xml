@@ -2,9 +2,25 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="departmentMapper">
+<mapper namespace="com.shuijing.boot.DepartmentMapper">
 
     <select id="findAll" resultType="com.shuijing.boot.Department">
         select * from tbl_department
     </select>
+
+    <select id="findById" parameterType="string" resultType="com.shuijing.boot.Department">
+        select * from tbl_department where id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="com.shuijing.boot.Department">
+        insert into tbl_department (id,name,tel) values (#{id},#{name},#{tel})
+    </insert>
+
+    <update id="update" parameterType="com.shuijing.boot.Department">
+        update tbl_department set name = #{name},tel = #{tel} where id = #{id}
+    </update>
+
+    <delete id="deleteById" parameterType="string">
+        delete from tbl_department where id = #{id}
+    </delete>
 </mapper>
